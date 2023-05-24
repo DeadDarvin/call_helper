@@ -9,7 +9,7 @@ class Group(models.Model):
     """ Модель группы, принадлежащей организации """
     organisation = models.ForeignKey(
         verbose_name='Принадлежит организации',
-        to=Organisation,
+        to='breaks.Organisation',
         on_delete=models.CASCADE,
         related_name='groups',
     )
