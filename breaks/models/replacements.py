@@ -35,41 +35,6 @@ class Replacement(models.Model):
         return f'Смена №{self.pk} для {self.group}'
 
 
-class ReplacementStatus(models.Model):
-    """
-    Модель статуса сотрудника смены.
-    Для просмотра его текущей активности.
-    Например: работает/обедает/нет на месте.
-    Отображается в модели ReplacementEmployee.
-    """
-    code = models.CharField(
-        verbose_name='Код',
-        max_length=16,
-        primary_key=True,
-    )
-    name = models.CharField(
-        verbose_name='Название',
-        max_length=32,
-    )
-    sort = models.PositiveSmallIntegerField(
-        verbose_name='Сортировка',
-        null=True,
-        blank=True,
-    )
-    is_active = models.BooleanField(
-        verbose_name='Активность',
-        default=True,
-    )
-
-    class Meta:
-        verbose_name = 'Статус сотрудника смены'
-        verbose_name_plural = 'Статусы сотрудников смены'
-        ordering = ['sort', ]
-
-    def __str__(self):
-        return f'{self.code}:{self.name}'
-
-
 class ReplacementEmployee(models.Model):
     """
     Модель сотрудника текущей смены.
