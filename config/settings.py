@@ -32,12 +32,14 @@ INSTALLED_APPS += [
     'django_filters',
     'corsheaders',
     'djoser',
+    'phonenumber_field',
 ]
 
 # apps
 INSTALLED_APPS += [
     'api',
     'common',
+    'users',
     'breaks',
 ]
 
@@ -156,6 +158,12 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+#########################
+# NEW USER MODEL
+#########################
+AUTH_USER_MODEL = "users.User"
+AUTHENTICATION_BACKENDS = ('users.backends.AuthBackend', )
 
 #########################
 # DRF SPECTACULAR
